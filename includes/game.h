@@ -1,6 +1,4 @@
-//
-// Created by Yedidia MUK'MAR on 2017/09/14.
-//
+
 
 #ifndef _GAME_H
 #define _GAME_H
@@ -11,4 +9,10 @@
 #include <openGl/gl.h>
 #include <dlfcn.h>
 
-#endif //UNTITLED_GAME_H
+#define COLUMNS 40
+#define ROWS 40
+
+void    initGrid(int x, int y);
+void    drawGrid();
+
+#endif
