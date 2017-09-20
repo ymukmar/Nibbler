@@ -11,6 +11,7 @@
 
 #define COLUMNS 40
 #define ROWS 40
+#define FPS 10
 
 void    initGrid(int x, int y);
 void    drawGrid();
