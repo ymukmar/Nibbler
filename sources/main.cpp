@@ -9,6 +9,7 @@ void    init()
 void    display_callback()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+    drawGrid();
     glutSwapBuffers();
 }
 
@@ -26,16 +27,20 @@ int     main(int argc, char **argv)
     void    *lib_handle;
     void    *fn;
 
-    lib_handle = dlopen("/goinfre/ymukmar/Desktop/Murk/Nibbler-Glut/Nibbler/libs/lib_check.so", RTLD_LAZY);
-    fn = dlsym(lib_handle, "ft_init");
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_RGB);
-    glutInitWindowSize(500, 500 );
-    glutCreateWindow("NIBBLER");
-    glutDisplayFunc(display_callback);
-    glutReshapeFunc(reshape_callback);
-    ((void*(*)(void))fn)();
-    init();
-    glutMainLoop();
+    if ((lib_handle = dlopen("./libs/lib_check.so", RTLD_LAZY)))
+    {
+        fn = dlsym(lib_handle, "ft_init");
+        glutInit(&argc, argv);
+        glutInitDisplayMode(GLUT_RGB);
+        glutInitWindowSize(500, 500 );
+        glutCreateWindow("NIBBLER");
+        glutDisplayFunc(display_callback);
+        glutReshapeFunc(reshape_callback);
+        ((void*(*)(void))fn)();
+        init();
+        glutMainLoop();
+    }
+    else
+        std::cout << "Failed to open Library\n";
     return 0;
 }

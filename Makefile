@@ -22,7 +22,7 @@ SRC = $(wildcard $(SRC_FOLDER)/*.cpp)
 all: $(NAME)
 
 $(NAME): $(SRC)
-	@$(CC) $(INC) $(FLAGS) $(FRAME) -o $@ $^
+	$(CC) $(INC) $(FLAGS) $(FRAME) -o $@ $^
 
 lib:
 	g++ -shared -o ./libs/lib_check.so -I ./libs ./libs/library.cpp -framework OpenGL -framework GLUT
