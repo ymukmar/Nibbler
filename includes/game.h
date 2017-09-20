@@ -11,9 +11,10 @@
 
 #define COLUMNS 40
 #define ROWS 40
-#define FPS 10
+#define FPS 16
 
 void    initGrid(int x, int y);
 void    drawGrid();
+void    drawSnake();
 
 #endif

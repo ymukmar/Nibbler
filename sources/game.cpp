@@ -1,6 +1,7 @@
 #include "game.h"
 
 int     gridX, gridY;
+int     i = 0;
 
 void    initGrid(int x, int y)
 {
@@ -37,4 +38,12 @@ void    drawGrid()
             unit(x, y);
         }
     }
+}
+
+void drawSnake()
+{
+    glRectd(i, 20, i + 2, 22);
+    i++;
+    if (i > 40)
+        i = 0;
 }

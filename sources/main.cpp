@@ -1,6 +1,5 @@
 #include "game.h"
 
-int     i = 0;
 
 void    init()
 {
@@ -12,10 +11,7 @@ void    display_callback()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     drawGrid();
-    glRectd(i, 20, i + 2, 22);
-    i++;
-    if (i > 40)
-        i = 0;
+    drawSnake();
     glutSwapBuffers();
 }
 
@@ -34,6 +30,11 @@ void    timer_callback(int)
     glutTimerFunc(1000/FPS, timer_callback, 0);
 }
 
+/*void    keyboard_callback(int key, int, int)
+{
+
+}*/
+
 int     main(int argc, char **argv)
 {
     void    *lib_handle;
@@ -49,6 +50,7 @@ int     main(int argc, char **argv)
         glutDisplayFunc(display_callback);
         glutReshapeFunc(reshape_callback);
         glutTimerFunc(0, timer_callback, 0);
+        //glutSpecialFunc(keyboard_callback);
         ((void*(*)(void))fn)();
         init();
         glutMainLoop();
