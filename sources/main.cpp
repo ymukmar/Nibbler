@@ -1,5 +1,6 @@
 #include "game.h"
 
+extern short sDirection;
 
 void    init()
 {
@@ -30,10 +31,31 @@ void    timer_callback(int)
     glutTimerFunc(1000/FPS, timer_callback, 0);
 }
 
-/*void    keyboard_callback(int key, int, int)
+void    keyboard_callback(int key, int, int)
 {
+    switch(key)
+    {
+        case GLUT_KEY_UP:
+            if (sDirection != DOWN)
+                sDirection = UP;
+            break;
 
-}*/
+        case GLUT_KEY_DOWN:
+            if (sDirection != UP)
+                sDirection = DOWN;
+            break;
+
+        case GLUT_KEY_LEFT:
+            if (sDirection != RIGHT)
+                sDirection = LEFT;
+            break;
+
+        case GLUT_KEY_RIGHT:
+            if (sDirection != LEFT)
+                sDirection = RIGHT;
+            break;
+    }
+}
 
 int     main(int argc, char **argv)
 {
@@ -50,7 +72,7 @@ int     main(int argc, char **argv)
         glutDisplayFunc(display_callback);
         glutReshapeFunc(reshape_callback);
         glutTimerFunc(0, timer_callback, 0);
-        //glutSpecialFunc(keyboard_callback);
+        glutSpecialFunc(keyboard_callback);
         ((void*(*)(void))fn)();
         init();
         glutMainLoop();

@@ -9,6 +9,11 @@
 #include <openGl/gl.h>
 #include <dlfcn.h>
 
+#define UP 4
+#define DOWN -4
+#define RIGHT 5
+#define LEFT -5
+
 #define COLUMNS 40
 #define ROWS 40
 #define FPS 16
